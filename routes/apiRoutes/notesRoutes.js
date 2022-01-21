@@ -1,5 +1,5 @@
 //Ive instantiated the express router class and called it router
-const router = require("express").Router;
+const router = require("express").Router();
 const fs = require('fs');
 const path = require('path');
 // shouldn't the post request come first because I dont even have any GET data so why do I even need get data 
