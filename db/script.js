@@ -18,16 +18,21 @@ function createNewNote(body, notes) {
     );
     return notes;
   }
+  readTheFile = () => JSON.parse(fs.readFileSync(path.join(__dirname, './db.json')));
+  
 
   function deleteNote(id, notes){
+   
+    console.log(notes)
     //so basically we are doing the exact same thing as createnewnote but if the note doesnt equal the clicked note then it appears and the clicked note doesnt appear
-    const results = notes.filter(notes => notes.id !== id);
+    const results = notes.filter(note => note.id !== id);
+    console.log(results)
 
     fs.writeFileSync(
-      path.join(__dirname, './db.json'),
+      path.join(__dirname, 'db.json'),
       //we are now setting the notes file in db.js to equal the results file
-      JSON.stringify({ notes:results }, null, 2)
+      JSON.stringify({ notes: results }, null, 2)
     );
     return notes;
   }
-  module.exports = {createNewNote, deleteNote}
+  module.exports = {createNewNote, deleteNote, readTheFile}
